@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEO Behavior 101</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+        .nav-link {
+            transition: all 0.3s ease;
+        }
+        .nav-link.active {
+            background-color: #3b82f6; /* blue-500 */
+            color: white;
+        }
+        /* Ensure hover on active tab is consistent and doesn't revert to non-active styles */
+        .nav-link.active:hover {
+            background-color: #2563eb; /* blue-600 */
+            color: white;
+        }
+        .content-section {
+            display: none;
+        }
+        .content-section.active {
+            display: block;
+        }
+        .card {
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        /* Styles for the modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 50;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.5);
+            animation: fadeIn 0.3s;
+        }
+        .modal-content {
+            animation: slideIn 0.3s;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes slideIn {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        /* Accordion Styles */
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        .accordion-button svg {
+            transition: transform 0.3s ease;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- Header -->
+    <header class="bg-white shadow-md sticky top-0 z-40">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row items-center justify-between py-4">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0">
+                         <svg class="h-8 w-8 text-blue-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
+                        </svg>
+                    </div>
+                    <h1 class="text-xl font-bold ml-3 text-gray-700 text-center md:text-left">NEO Behavior 101</h1>
+                </div>
+                <nav class="mt-4 md:mt-0">
+                    <div class="flex flex-wrap justify-center items-center gap-2">
+                        <a href="#data" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-900 active" data-target="data">Data Collection</a>
+                        <a href="#ef-skills" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-900" data-target="ef-skills">Executive Function & Behavior Skills</a>
+                        <a href="#bip" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-900" data-target="bip">BIP Fidelity</a>
+                        <a href="#strategies" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-900" data-target="strategies">Behavior Strategies</a>
+                        <a href="#support" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-900" data-target="support">Getting Support</a>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
+
+        <!-- Section 1: Data Collection -->
+        <section id="data" class="content-section active">
+            <h2 class="text-3xl font-bold text-gray-800 mb-2">Effective Data Collection</h2>
+            <p class="text-lg text-gray-600 mb-6">Collecting objective data is the foundation of any effective behavior plan. It helps us move from "I feel like it's getting worse" to "The behavior occurs an average of 5 times per hour." Good data allows us to identify patterns, make informed decisions, and measure progress accurately.</p>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Data Types -->
+                <div class="bg-white p-6 rounded-lg shadow">
+                    <h3 class="text-xl font-bold mb-4">Types of Data Collection</h3>
+                    <div class="space-y-4">
+                        <div>
+                            <h4 class="font-semibold text-blue-600">Frequency/Event Recording</h4>
+                            <p class="text-gray-600 text-sm">Simply tallying the number of times a specific behavior occurs. <br><b>Best for:</b> Behaviors that have a clear start and end, and don't happen so often that it's impossible to count (e.g., calling out, hitting, task completion).</p>
+                        </div>
+                        <hr>
+                        <div>
+                            <h4 class="font-semibold text-blue-600">Duration Recording</h4>
+                            <p class="text-gray-600 text-sm">Measuring how long a behavior lasts, from start to finish. <br><b>Best for:</b> Behaviors where the length of time is the primary concern (e.g., time spent out of seat, length of tantrums, time on-task).</p>
+                        </div>
+                         <hr>
+                        <div>
+                            <h4 class="font-semibold text-blue-600">Latency Recording</h4>
+                            <p class="text-gray-600 text-sm">Measuring the time between a prompt/instruction and the beginning of the student's response. <br><b>Best for:</b> Assessing compliance and processing speed (e.g., how long it takes a student to start their work after being told to do so).</p>
+                        </div>
+                        <hr>
+                        <div>
+                            <h4 class="font-semibold text-blue-600">Partial Interval Recording</h4>
+                            <p class="text-gray-600 text-sm">You mark if the behavior occurred at <span class="font-bold">any point</span> during a short interval. <br><b>Best for:</b> Behaviors you want to decrease. This method tends to overestimate behavior, making it a good choice for ensuring you catch every instance of a challenging behavior.</p>
+                        </div>
+                        <hr>
+                        <div>
+                            <h4 class="font-semibold text-blue-600">Whole Interval Recording</h4>
+                            <p class="text-gray-600 text-sm">You mark if the behavior occurred for the <span class="font-bold">entire duration</span> of the interval. <br><b>Best for:</b> Behaviors you want to increase, like "time on task" or "in-seat behavior." It sets a high bar for what is considered a success.</p>
+                        </div>
+                        <hr>
+                         <div>
+                            <h4 class="font-semibold text-blue-600">Momentary Time Sampling</h4>
+                            <p class="text-gray-600 text-sm">You look at the student for just a moment at the <span class="font-bold">end</span> of an interval and record if the behavior is happening at that exact instant. <br><b>Best for:</b> Classroom teachers who are also instructing, as it's less disruptive than continuous observation. It provides an estimate.</p>
+                        </div>
+                        <hr>
+                        <div>
+                            <h4 class="font-semibold text-blue-600">ABC Data (Antecedent-Behavior-Consequence)</h4>
+                            <p class="text-gray-600 text-sm">A descriptive method where you record what happened right <span class="font-bold">before</span> the behavior, the behavior itself, and what happened right <span class="font-bold">after</span>. <br><b>Best for:</b> Determining the function or "why" of a behavior. This is crucial for developing a Behavior Intervention Plan (BIP).</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cheat Sheet Wizard -->
+                <div class="bg-blue-50 p-6 rounded-lg shadow">
+                    <h3 class="text-xl font-bold mb-4">Data Collection "Cheat Sheet" Wizard</h3>
+                    <p class="text-gray-700 mb-4">Answer these questions to find a good starting point for data collection.</p>
+                    <div id="wizard-questions" class="space-y-4">
+                        <div>
+                            <label class="font-semibold block mb-2">1. What is your primary concern about the behavior?</label>
+                            <select id="q1" class="w-full p-2 border rounded-md bg-white">
+                                <option value="">Select an option...</option>
+                                <option value="how-often">How often it happens</option>
+                                <option value="how-long">How long it lasts</option>
+                                <option value="why">Why it's happening (the trigger)</option>
+                                <option value="high-freq">It happens constantly/is hard to count</option>
+                                <option value="delay">The delay in following directions</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div id="wizard-result" class="mt-6 p-4 bg-white rounded-lg border-2 border-blue-500 border-dashed" style="display: none;">
+                        <h4 class="font-bold text-lg text-blue-700">Recommended Method:</h4>
+                        <p id="result-text" class="mt-2"></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: Executive Functioning and Behavior Skills -->
+        <section id="ef-skills" class="content-section">
+            <h2 class="text-3xl font-bold text-gray-800 mb-2">Executive Functioning and Behavior Skills</h2>
+            <p class="text-lg text-gray-600 mb-6">Executive function (EF) skills are the mental processes that allow students to plan, organize, focus, remember, and manage multiple tasks. Strong EF and self-regulation are foundational for learning, and all students benefit from explicit instruction in these areas.</p>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Key Skills -->
+                <div class="lg:col-span-2 bg-white p-6 rounded-lg shadow">
+                    <h3 class="text-xl font-bold mb-4 text-indigo-600">Key Skills to Teach</h3>
+                    <div class="space-y-3">
+                        <p><strong>Organization & Planning:</strong> Breaking tasks into steps, using planners, and setting goals.</p>
+                        <p><strong>Time Management & Task Initiation:</strong> Scheduling work, using timers, and starting tasks promptly.</p>
+                        <p><strong>Working Memory & Focus:</strong> Holding multi-step directions in mind and attending to tasks.</p>
+                        <p><strong>Cognitive Flexibility:</strong> Shifting strategies when something isn’t working and finding alternative solutions.</p>
+                        <p><strong>Self-Monitoring & Reflection:</strong> Checking one's own work and adjusting strategies as needed.</p>
+                        <p><strong>Impulse Control & Inhibition:</strong> Thinking before acting, using self-talk and "stop signals."</p>
+                        <p><strong>Emotional Awareness & Regulation:</strong> Identifying feelings and using coping tools to stay calm.</p>
+                    </div>
+                </div>
+                <!-- Teaching Strategies -->
+                <div class="bg-indigo-50 p-6 rounded-lg shadow">
+                    <h3 class="text-xl font-bold mb-4 text-indigo-600">Effective Teaching Strategies</h3>
+                    <ul class="list-disc list-inside space-y-2 text-gray-700">
+                        <li><strong>Direct Instruction & Modeling:</strong> Explicitly teach each skill using think-alouds.</li>
+                        <li><strong>Visual Supports:</strong> Use graphic organizers, checklists, and color-coding.</li>
+                        <li><strong>Routines and Agendas:</strong> Build predictable routines to prime working memory.</li>
+                        <li><strong>Scaffolded Practice:</strong> Start with guidance and gradually release responsibility.</li>
+                        <li><strong>Integrate into Academics:</strong> Embed EF skill practice directly into lessons.</li>
+                        <li><strong>Positive Framing & Self-Talk:</strong> Encourage a positive mindset and motivational self-talk.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mt-8 bg-white p-6 rounded-lg shadow">
+                <h3 class="text-xl font-bold mb-4 text-indigo-600">Sample Resources & Curricula</h3>
+                <p class="text-gray-600 mb-4">Many structured curricula and free resources exist to support EF and SEL instruction. Consider exploring:</p>
+                <ul class="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-2 list-disc list-inside text-gray-700">
+                    <li>
+                        Harvard's Activities Guide
+                        <!-- Accordion for supplemental info -->
+                        <div class="mt-2 space-y-1">
+                            <div>
+                                <button class="accordion-button w-full text-left text-sm font-semibold text-blue-600 p-2 bg-blue-50 rounded hover:bg-blue-100 flex justify-between items-center">
+                                    <span>Activities for Ages 5-7</span>
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                                </button>
+                                <div class="accordion-content bg-white p-3 border border-t-0 rounded-b-md">
+                                    <p class="text-xs text-gray-600">Focus on games with rules. Use card games like Concentration or Go Fish for working memory, and physical games like Red Light, Green Light or Simon Says for attention and inhibition. Movement and song games (e.g., Punchinella, call-and-response songs) are also great.</p>
+                                </div>
+                            </div>
+                             <div>
+                                <button class="accordion-button w-full text-left text-sm font-semibold text-blue-600 p-2 bg-blue-50 rounded hover:bg-blue-100 flex justify-between items-center">
+                                    <span>Activities for Ages 7-12</span>
+                                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                                </button>
+                                <div class="accordion-content bg-white p-3 border border-t-0 rounded-b-md">
+                                    <p class="text-xs text-gray-600">Increase complexity. Use strategy games like chess, checkers, or Hearts. Organized sports like soccer help with coordination and attention. Jump rope games, music/dance, and brain teasers like Sudoku or crossword puzzles are also effective.</p>
+                                </div>
+                            </div>
+                             <div>
+                                <button class="accordion-button w-full text-left text-sm font-semibold text-blue-600 p-2 bg-blue-50 rounded hover:bg-blue-100 flex justify-between items-center">
+                                    <span>Activities for Adolescents</span>
+                                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                                </button>
+                                <div class="accordion-content bg-white p-3 border border-t-0 rounded-b-md">
+                                    <p class="text-xs text-gray-600">Focus on real-world application. Encourage goal setting for meaningful projects (e.g., getting a driver's license, planning an event). Use self-talk and journaling for self-monitoring. Sports, yoga, music, theater, and strategy games are excellent. Explicitly teach study skills like breaking down projects and using calendars.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>SMARTS Executive Function Curriculum</li>
+                    <li>Second Step (K-8 SEL)</li>
+                    <li>Zones of Regulation</li>
+                    <li>Be Good People (free SEL)</li>
+                    <li>Harmony SEL</li>
+                    <li>Centervention Activities</li>
+                    <li>Pathway2Success Printables</li>
+                    <li>Everyday Speech Materials</li>
+                </ul>
+            </div>
+            <div class="mt-8">
+                <h3 class="text-2xl font-bold text-gray-800 mb-2">Lesson Plan Unit Generator Tool</h3>
+                <p class="text-lg text-gray-600 mb-6">Use this embedded tool to help generate ideas and structures for your lesson plans and units, putting the EF skills above into practice. If the tool below does not load, you can <a href="https://jggorman91.github.io/Unit-Generator/" target="_blank" class="text-blue-500 hover:underline">access it directly here</a>.</p>
+                <div class="w-full h-[80vh] bg-white rounded-lg shadow overflow-hidden">
+                    <iframe src="https://jggorman91.github.io/Unit-Generator/" class="w-full h-full border-0"></iframe>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: BIP Fidelity -->
+        <section id="bip" class="content-section">
+             <h2 class="text-3xl font-bold text-gray-800 mb-2">Ensuring BIP Fidelity & Stakeholder Communication</h2>
+            <p class="text-lg text-gray-600 mb-6">A BIP is only effective if it's implemented consistently by everyone who works with the student. This is called <span class="font-bold">fidelity</span>. Clear communication and shared understanding are essential.</p>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow space-y-4">
+                    <h3 class="text-xl font-bold mb-2">Key Steps for All Stakeholders</h3>
+                    <div>
+                        <h4 class="font-semibold text-green-600">1. Ensure Access & Understanding</h4>
+                        <p class="text-gray-600 text-sm">Every adult involved (gen ed teachers, paras, specials teachers, admin, bus drivers) must have access to the BIP. Don't assume they've read it just because it's in the IEP. Review it with them.</p>
+                    </div>
+                    <hr>
+                    <div>
+                        <h4 class="font-semibold text-green-600">2. Clarify Roles</h4>
+                        <p class="text-gray-600 text-sm">Each person should know their specific role. Who is prompting the replacement behavior? Who provides the reinforcement? Who takes the data? Be explicit.</p>
+                    </div>
+                    <hr>
+                    <div>
+                        <h4 class="font-semibold text-green-600">3. Utilize Technology for Accountability</h4>
+                        <p class="text-gray-600 text-sm">Systems like Euna can be valuable. When you email a BIP, you can often see if the email has been opened. This adds a layer of accountability and is a good starting point for a follow-up conversation: "I saw you had a chance to open the BIP, do you have any questions?"</p>
+                    </div>
+                     <hr>
+                    <div>
+                        <h4 class="font-semibold text-green-600">4. Schedule In-Person Reviews</h4>
+                        <p class="text-gray-600 text-sm">Technology is a tool, not a replacement for conversation. Hold brief, in-person meetings or check-ins at the start of implementation and periodically thereafter to troubleshoot and ensure everyone is on the same page.</p>
+                    </div>
+                </div>
+                <div class="bg-green-50 p-6 rounded-lg shadow">
+                    <h3 class="text-xl font-bold mb-4">Implementation Checklist Simulation</h3>
+                    <p class="text-gray-700 mb-4">Use this checklist to ensure your team is ready. In a real scenario, you'd discuss this with your team.</p>
+                    <div class="space-y-3">
+                        <label class="flex items-center p-3 bg-white rounded-md shadow-sm">
+                            <input type="checkbox" class="h-5 w-5 rounded border-gray-300 text-green-600 focus:ring-green-500">
+                            <span class="ml-3 text-gray-700">All team members have received a copy of the BIP.</span>
+                        </label>
+                        <label class="flex items-center p-3 bg-white rounded-md shadow-sm">
+                            <input type="checkbox" class="h-5 w-5 rounded border-gray-300 text-green-600 focus:ring-green-500">
+                            <span class="ml-3 text-gray-700">The BIP has been reviewed in a team meeting.</span>
+                        </label>
+                         <label class="flex items-center p-3 bg-white rounded-md shadow-sm">
+                            <input type="checkbox" class="h-5 w-5 rounded border-gray-300 text-green-600 focus:ring-green-500">
+                            <span class="ml-3 text-gray-700">Each member can state their specific role in implementation.</span>
+                        </label>
+                         <label class="flex items-center p-3 bg-white rounded-md shadow-sm">
+                            <input type="checkbox" class="h-5 w-5 rounded border-gray-300 text-green-600 focus:ring-green-500">
+                            <span class="ml-3 text-gray-700">The data collection method is clear and materials are ready.</span>
+                        </label>
+                         <label class="flex items-center p-3 bg-white rounded-md shadow-sm">
+                            <input type="checkbox" class="h-5 w-5 rounded border-gray-300 text-green-600 focus:ring-green-500">
+                            <span class="ml-3 text-gray-700">A follow-up meeting is scheduled in 2-4 weeks.</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: Behavior Strategies -->
+        <section id="strategies" class="content-section">
+            <h2 class="text-3xl font-bold text-gray-800 mb-2">Front-Line Behavior Strategies</h2>
+            <p class="text-lg text-gray-600 mb-6">These are proactive and reactive strategies that can be used in the classroom to support positive behavior. Many of these are excellent Tier 1 supports for all students.</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Strategy Cards -->
+                <div class="card bg-white p-6 rounded-lg shadow cursor-pointer" data-strategy="token-board">
+                    <h3 class="text-xl font-bold text-purple-600">Token Boards</h3>
+                    <p class="mt-2 text-gray-600">A visual system where a student earns tokens for desired behaviors, which can be exchanged for a larger reward.</p>
+                </div>
+                <div class="card bg-white p-6 rounded-lg shadow cursor-pointer" data-strategy="first-then">
+                    <h3 class="text-xl font-bold text-purple-600">First-Then Boards</h3>
+                    <p class="mt-2 text-gray-600">A simple visual that shows a student what they need to do now (First) and what will come next (Then).</p>
+                </div>
+                <div class="card bg-white p-6 rounded-lg shadow cursor-pointer" data-strategy="visuals">
+                    <h3 class="text-xl font-bold text-purple-600">Visual Schedules/Supports</h3>
+                    <p class="mt-2 text-gray-600">Using pictures or words to show the sequence of activities for the day or a specific task.</p>
+                </div>
+                <div class="card bg-white p-6 rounded-lg shadow cursor-pointer" data-strategy="social-stories">
+                    <h3 class="text-xl font-bold text-purple-600">Social Stories</h3>
+                    <p class="mt-2 text-gray-600">A short, descriptive story that explains a social situation, skill, or concept to a student.</p>
+                </div>
+                <div class="card bg-white p-6 rounded-lg shadow cursor-pointer" data-strategy="routines">
+                    <h3 class="text-xl font-bold text-purple-600">Routines & Procedures</h3>
+                    <p class="mt-2 text-gray-600">Explicitly teaching and practicing classroom routines to make expectations predictable and clear.</p>
+                </div>
+                <div class="card bg-white p-6 rounded-lg shadow cursor-pointer" data-strategy="otr">
+                    <h3 class="text-xl font-bold text-purple-600">Opportunities to Respond (OTR)</h3>
+                    <p class="mt-2 text-gray-600">Increasing the rate at which students are asked to actively respond (e.g., choral response, whiteboards).</p>
+                </div>
+                <div class="card bg-white p-6 rounded-lg shadow cursor-pointer" data-strategy="ratio">
+                    <h3 class="text-xl font-bold text-purple-600">4-to-1 Ratio</h3>
+                    <p class="mt-2 text-gray-600">Providing at least four positive interactions or specific praises for every one correction or redirection.</p>
+                </div>
+                 <div class="card bg-white p-6 rounded-lg shadow cursor-pointer" data-strategy="breaks">
+                    <h3 class="text-xl font-bold text-purple-600">Scheduled Breaks</h3>
+                    <p class="mt-2 text-gray-600">Proactively providing breaks to prevent overwhelm, rather than waiting for the student to need one.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 5: Getting More Support -->
+        <section id="support" class="content-section">
+            <h2 class="text-3xl font-bold text-gray-800 mb-2">When a BIP Isn't Enough: Getting More Support</h2>
+            <p class="text-lg text-gray-600 mb-6">Sometimes, despite a well-written BIP and high-fidelity implementation, a student may not make the expected progress. This is not a failure, but a sign that more support is needed.</p>
+
+            <div class="bg-white p-8 rounded-lg shadow">
+                <h3 class="text-2xl font-bold mb-4">The Importance of Fidelity FIRST</h3>
+                <p class="mb-6">Before escalating, we must be confident that the current plan has been implemented with <span class="font-bold">fidelity</span>. Ask these questions:</p>
+                <ul class="list-disc list-inside space-y-2 mb-8 text-gray-700">
+                    <li>Is the data being taken consistently and accurately?</li>
+                    <li>Are all staff members using the same strategies and language?</li>
+                    <li>Are the reinforcements being delivered as planned and are they still motivating for the student?</li>
+                    <li>Has the environment changed in a way that might be impacting the behavior?</li>
+                </ul>
+
+                <h3 class="text-2xl font-bold mb-4 text-red-600">The Escalation Pathway</h3>
+                <p class="mb-6">If you have solid data showing the plan is being implemented with fidelity but the behavior is not improving (or is getting worse), it's time to act. Don't wait.</p>
+                
+                <div class="border-l-4 border-red-500 pl-4">
+                    <div class="relative pb-8">
+                        <span class="absolute top-4 left-[-22px] h-full w-0.5 bg-gray-200"></span>
+                        <div class="relative flex items-start">
+                            <div class="h-10 w-10 rounded-full bg-red-500 flex items-center justify-center ring-8 ring-white">
+                                <span class="text-white font-bold">1</span>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="text-lg font-bold">First Point of Contact: School Psychologist</h4>
+                                <p class="mt-1 text-gray-600">Gather your data and the BIP. Contact your building's school psychologist. They are your primary partner in this process. They will help you analyze the situation, review the data, and observe the student.</p>
+                            </div>
+                        </div>
+                    </div>
+                     <div class="relative pb-8">
+                        <span class="absolute top-4 left-[-22px] h-full w-0.5 bg-gray-200"></span>
+                         <div class="relative flex items-start">
+                            <div class="h-10 w-10 rounded-full bg-red-500 flex items-center justify-center ring-8 ring-white">
+                                <span class="text-white font-bold">2</span>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="text-lg font-bold">Team Problem-Solving</h4>
+                                <p class="mt-1 text-gray-600">The school psychologist will likely convene a team meeting (including you, general education teacher, admin, and other relevant staff) to review the data and fidelity checks. The team may decide to adjust the BIP with new strategies or goals.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="relative">
+                         <div class="relative flex items-start">
+                            <div class="h-10 w-10 rounded-full bg-red-500 flex items-center justify-center ring-8 ring-white">
+                                <span class="text-white font-bold">3</span>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="text-lg font-bold">Considering District-Level Support</h4>
+                                <p class="mt-1 text-gray-600">If the team has exhausted its resources and the student is still not making progress, the school psychologist will navigate the process to determine if more intensive, district-level behavior support is warranted. This is a collaborative decision based on extensive data and documentation.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modal for Strategy Details -->
+    <div id="strategy-modal" class="modal">
+        <div class="modal-content bg-white w-11/12 md:max-w-2xl mx-auto mt-20 p-8 rounded-lg shadow-2xl relative">
+            <button id="modal-close-btn" class="absolute top-4 right-4 text-gray-500 hover:text-gray-800">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+            <div id="modal-body">
+                <!-- Content will be injected by JS -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // --- Navigation ---
+            const navLinks = document.querySelectorAll('.nav-link');
+            const sections = document.querySelectorAll('.content-section');
+
+            function showSection(targetId) {
+                sections.forEach(section => {
+                    section.classList.remove('active');
+                    if (section.id === targetId) {
+                        section.classList.add('active');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.dataset.target === targetId) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+
+            // Set initial view based on hash or default to 'data'
+            const initialTarget = window.location.hash ? window.location.hash.substring(1) : 'data';
+            showSection(initialTarget);
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const targetId = e.currentTarget.dataset.target;
+                    showSection(targetId);
+                    // Update URL hash for bookmarking/linking
+                    history.pushState(null, null, `#${targetId}`);
+                    window.scrollTo(0,0);
+                });
+            });
+
+            // --- Data Collection Wizard ---
+            const q1 = document.getElementById('q1');
+            const wizardResult = document.getElementById('wizard-result');
+            const resultText = document.getElementById('result-text');
+
+            const recommendations = {
+                'how-often': '<b>Frequency Recording.</b> This is the most direct way to measure how often a discrete behavior occurs. It gives you a clear, countable number.',
+                'how-long': '<b>Duration Recording.</b> This is best when your main concern is the length of a behavior, like how long a tantrum lasts or how much time a student spends on task.',
+                'why': '<b>ABC (Antecedent-Behavior-Consequence) Data.</b> This is essential for understanding the function of a behavior. It helps you see what triggers it and what might be reinforcing it.',
+                'high-freq': `<b>Interval Recording is your best bet.</b> There are three main types:
+                    <br>- Use <b>Partial Interval</b> if you want to decrease a behavior (it's good at catching any occurrence).
+                    <br>- Use <b>Whole Interval</b> if you want to increase a behavior like 'time on task' (it requires the behavior to last).
+                    <br>- Use <b>Momentary Time Sampling</b> if you can only look at the student at specific moments, not continuously.`,
+                'delay': '<b>Latency Recording.</b> This specifically measures the time it takes for a student to comply with a directive, which is exactly what you want to know.'
+            };
+
+            q1.addEventListener('change', () => {
+                const value = q1.value;
+                if (value && recommendations[value]) {
+                    resultText.innerHTML = recommendations[value];
+                    wizardResult.style.display = 'block';
+                } else {
+                    wizardResult.style.display = 'none';
+                }
+            });
+
+            // --- Accordion Logic ---
+            const accordionButtons = document.querySelectorAll('.accordion-button');
+            accordionButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const content = button.nextElementSibling;
+                    const svg = button.querySelector('svg');
+
+                    if (content.style.maxHeight) {
+                        content.style.maxHeight = null;
+                        svg.style.transform = 'rotate(0deg)';
+                    } else {
+                        content.style.maxHeight = content.scrollHeight + "px";
+                        svg.style.transform = 'rotate(180deg)';
+                    } 
+                });
+            });
+
+            // --- Strategy Modal ---
+            const modal = document.getElementById('strategy-modal');
+            const modalBody = document.getElementById('modal-body');
+            const closeModalBtn = document.getElementById('modal-close-btn');
+
+            const strategyDetails = {
+                'token-board': {
+                    title: 'Token Boards',
+                    color: 'purple',
+                    content: `
+                        <p class="mb-4">A token economy is a system of contingency management based on the systematic reinforcement of target behavior. The reinforcers are symbols or "tokens" that can be exchanged for other reinforcers.</p>
+                        <h4 class="font-bold text-lg mb-2">How to Implement:</h4>
+                        <ol class="list-decimal list-inside space-y-2">
+                            <li><b>Identify the target behavior:</b> What do you want the student to do? (e.g., stay in their seat, complete 3 problems).</li>
+                            <li><b>Choose the tokens:</b> Can be stars, checkmarks, stickers, etc.</li>
+                            <li><b>Determine the reward:</b> What will the student earn? Let them choose from a menu of options.</li>
+                            <li><b>Set the "price":</b> How many tokens are needed to earn the reward? Start small and increase as the student finds success.</li>
+                            <li><b>Deliver tokens immediately</b> after the target behavior occurs, with specific verbal praise ("Great job starting your work! You earned a token.").</li>
+                        </ol>
+                    `
+                },
+                'first-then': {
+                    title: 'First-Then Boards',
+                    color: 'purple',
+                    content: `
+                        <p class="mb-4">This visual support is based on the Premack principle, which states that a more probable behavior can be used to reinforce a less probable behavior. It shows the student that a preferred activity will follow a non-preferred task.</p>
+                        <h4 class="font-bold text-lg mb-2">How to Implement:</h4>
+                        <ol class="list-decimal list-inside space-y-2">
+                            <li><b>Use clear visuals:</b> Use pictures or simple words for "First" and "Then".</li>
+                            <li><b>State it simply:</b> "First work, then iPad."</li>
+                            <li><b>Be consistent:</b> Always follow through. The "Then" must be awarded immediately after the "First" is completed.</li>
+                            <li><b>Keep it for non-preferred tasks:</b> It's most powerful when used to get through challenging moments, not for every single task.</li>
+                        </ol>
+                    `
+                },
+                'visuals': {
+                    title: 'Visual Schedules/Supports',
+                    color: 'purple',
+                    content: `
+                        <p class="mb-4">Visual supports help make abstract concepts like time and expectations concrete. They reduce anxiety by making the environment predictable.</p>
+                        <h4 class="font-bold text-lg mb-2">Types of Visuals:</h4>
+                        <ul class="list-disc list-inside space-y-2">
+                            <li><b>Daily Schedule:</b> Shows the major activities of the day in order.</li>
+                            <li><b>Task Analysis:</b> Breaks a multi-step task (like washing hands) into small, pictured steps.</li>
+                            <li><b>Choice Boards:</b> Gives a student a visual field of options to choose from.</li>
+                            <li><b>Classroom Rules:</b> Shows pictures of the expected behaviors.</li>
+                        </ul>
+                    `
+                },
+                'social-stories': {
+                    title: 'Social Stories',
+                    color: 'purple',
+                    content: `
+                        <p class="mb-4">Developed by Carol Gray, Social Stories™ are short, simple narratives that describe a social situation, skill, or concept from the student's perspective. They are meant to be read proactively, before the situation occurs.</p>
+                        <h4 class="font-bold text-lg mb-2">Key Components:</h4>
+                        <ul class="list-disc list-inside space-y-2">
+                            <li><b>Descriptive Sentences:</b> State facts about the situation. ("We have fire drills at school.")</li>
+                            <li><b>Perspective Sentences:</b> Describe the thoughts and feelings of others. ("The loud bell might surprise some students.")</li>
+                            <li><b>Directive Sentences:</b> Gently suggest a response. ("I will try to stay calm and walk in a line.")</li>
+                            <li><b>Affirmative Sentences:</b> Reinforce a key point. ("This is important to stay safe.")</li>
+                        </ul>
+                    `
+                },
+                 'routines': {
+                    title: 'Routines & Procedures',
+                    color: 'purple',
+                    content: `
+                        <p class="mb-4">A well-managed classroom is built on a foundation of clear, practiced routines. When students know exactly what to do and how to do it, cognitive load is reduced, and they are more available for learning.</p>
+                        <h4 class="font-bold text-lg mb-2">How to Implement:</h4>
+                        <ol class="list-decimal list-inside space-y-2">
+                            <li><b>Identify key procedures:</b> Entering the room, turning in work, sharpening a pencil, transitioning between activities.</li>
+                            <li><b>Teach explicitly:</b> Model the procedure step-by-step. Don't just tell, show.</li>
+                            <li><b>Practice:</b> Have students practice the routine multiple times, especially at the beginning of the year.</li>
+                            <li><b>Reinforce:</b> Give positive feedback for following the routine correctly. Reteach as needed.</li>
+                        </ol>
+                    `
+                },
+                 'otr': {
+                    title: 'Opportunities to Respond (OTR)',
+                    color: 'purple',
+                    content: `
+                        <p class="mb-4">Increasing the rate of active student responding is strongly linked to increased academic engagement and decreased disruptive behavior. When students are busy responding, they have less time to be off-task.</p>
+                        <h4 class="font-bold text-lg mb-2">Examples:</h4>
+                        <ul class="list-disc list-inside space-y-2">
+                            <li><b>Choral Responding:</b> Ask a question and have the whole class call out the answer in unison.</li>
+                            <li><b>Whiteboards:</b> Ask a question, give think time, and then have all students hold up their whiteboards with the answer.</li>
+                            <li><b>Guided Notes:</b> Provide students with outlines of the lesson and have them fill in key words and concepts as you teach.</li>
+                            <li><b>Think-Pair-Share:</b> Students think about a prompt, discuss it with a partner, and then share with the class.</li>
+                        </ul>
+                    `
+                },
+                 'ratio': {
+                    title: '4-to-1 Ratio',
+                    color: 'purple',
+                    content: `
+                        <p class="mb-4">This simple but powerful strategy focuses on building positive relationships and reinforcing desired behaviors. The goal is to have at least four positive, affirming interactions for every one corrective interaction.</p>
+                        <h4 class="font-bold text-lg mb-2">What Counts as a Positive Interaction?</h4>
+                        <ul class="list-disc list-inside space-y-2">
+                            <li><b>Specific, labeled praise:</b> "I love how you got started on your work right away." is much better than "Good job."</li>
+                            <li><b>Non-verbal cues:</b> A smile, a thumbs-up, a nod.</li>
+                            <li><b>Positive notes or calls home.</b></li>
+                            <li><b>Asking about their interests:</b> Showing genuine care for them as a person.</li>
+                        </ul>
+                        <p class="mt-4">This helps build a "behavioral bank account." When you have to make a "withdrawal" (a correction), you have plenty of positive capital built up.</p>
+                    `
+                },
+                 'breaks': {
+                    title: 'Scheduled Breaks',
+                    color: 'purple',
+                    content: `
+                        <p class="mb-4">For many students, especially those who struggle with sustained attention or emotional regulation, breaks are not a reward—they are a necessary tool for learning. Proactively scheduling breaks can prevent behavioral escalations.</p>
+                        <h4 class="font-bold text-lg mb-2">How to Implement:</h4>
+                        <ul class="list-disc list-inside space-y-2">
+                            <li><b>Make it part of the schedule:</b> Don't wait for the student to be overwhelmed. The break should be built into their visual schedule (e.g., "Work for 10 minutes, then 2-minute break").</li>
+                            <li><b>Define the break:</b> What can the student do? (e.g., stretch, get a drink, walk to a designated spot).</li>
+                            <li><b>Use a timer:</b> A visual timer helps the student understand how long the break is and when it's time to return to work.</li>
+                            <li><b>This is different from "earning" a break:</b> This is a proactive support, not a reward for task completion.</li>
+                        </ul>
+                    `
+                }
+            };
+
+            document.querySelectorAll('.card[data-strategy]').forEach(card => {
+                card.addEventListener('click', () => {
+                    const strategy = card.dataset.strategy;
+                    const data = strategyDetails[strategy];
+                    if (data) {
+                        modalBody.innerHTML = `
+                            <h2 class="text-3xl font-bold text-${data.color}-600 mb-4">${data.title}</h2>
+                            <div class="text-gray-700">${data.content}</div>
+                        `;
+                        modal.style.display = 'flex';
+                    }
+                });
+            });
+
+            function closeModal() {
+                modal.style.display = 'none';
+            }
+
+            closeModalBtn.addEventListener('click', closeModal);
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    closeModal();
+                }
+            });
+
+        });
+    </script>
+</body>
+</html>
