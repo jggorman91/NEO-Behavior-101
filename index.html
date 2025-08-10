@@ -60,26 +60,6 @@
             from { transform: translateY(-50px); opacity: 0; }
             to { transform: translateY(0); opacity: 1; }
         }
-        /* Accordion Styles */
-        .accordion-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease-out;
-        }
-        .accordion-button svg {
-            transition: transform 0.3s ease;
-        }
-        .resource-card {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            transition: all 0.2s ease-in-out;
-        }
-        .resource-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);
-        }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-800">
@@ -98,11 +78,14 @@
                 </div>
                 <nav class="mt-4 md:mt-0">
                     <div class="flex flex-wrap justify-center items-center gap-2">
-                        <a href="#data" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-900 active" data-target="data">Data Collection</a>
-                        <a href="#ef-skills" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-900" data-target="ef-skills">Executive Function & Behavior Skills</a>
+                        <a href="#home" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-900 active" data-target="home">Home</a>
+                        <a href="#data" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-900" data-target="data">Data Collection</a>
+                        <a href="#goal-writing" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-900" data-target="goal-writing">Goal Writing</a>
+                        <a href="#ef-skills" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-900" data-target="ef-skills">EF & Behavior Skills</a>
+                        <a href="#goalbook" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-900" data-target="goalbook">Goalbook</a>
                         <a href="#bip" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-900" data-target="bip">BIP Fidelity</a>
-                        <a href="#strategies" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-900" data-target="strategies">Behavior Strategies</a>
-                        <a href="#support" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-900" data-target="support">Getting Support</a>
+                        <a href="#strategies" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-900" data-target="strategies">Strategies</a>
+                        <a href="#support" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-900" data-target="support">Support</a>
                     </div>
                 </nav>
             </div>
@@ -112,8 +95,89 @@
     <!-- Main Content -->
     <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
 
+        <!-- Section 0: Home Page -->
+        <section id="home" class="content-section active">
+            <div class="text-center">
+                <h2 class="text-4xl font-bold text-gray-800 mb-2">Welcome to NEO Behavior 101</h2>
+                <p class="text-xl text-gray-600 mb-8">Your central hub for behavior support resources, strategies, and tools.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Data Collection Card -->
+                <a href="#data" data-target="data" class="home-card card bg-white p-6 rounded-lg shadow flex items-center space-x-4">
+                    <div class="flex-shrink-0 bg-blue-100 p-3 rounded-full">
+                        <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold">Data Collection</h3>
+                        <p class="text-gray-600 text-sm">Learn effective ways to collect and use behavior data.</p>
+                    </div>
+                </a>
+                <!-- Goal Writing Card -->
+                <a href="#goal-writing" data-target="goal-writing" class="home-card card bg-white p-6 rounded-lg shadow flex items-center space-x-4">
+                    <div class="flex-shrink-0 bg-cyan-100 p-3 rounded-full">
+                         <svg class="w-6 h-6 text-cyan-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold">IEP Goal Writing</h3>
+                        <p class="text-gray-600 text-sm">Craft effective, SMART goals for behavior and EF skills.</p>
+                    </div>
+                </a>
+                <!-- EF & Behavior Skills Card -->
+                <a href="#ef-skills" data-target="ef-skills" class="home-card card bg-white p-6 rounded-lg shadow flex items-center space-x-4">
+                    <div class="flex-shrink-0 bg-indigo-100 p-3 rounded-full">
+                        <svg class="w-6 h-6 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path></svg>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold">EF & Behavior Skills</h3>
+                        <p class="text-gray-600 text-sm">Explore strategies for teaching executive functioning.</p>
+                    </div>
+                </a>
+                <!-- Goalbook Card -->
+                 <a href="#goalbook" data-target="goalbook" class="home-card card bg-white p-6 rounded-lg shadow flex items-center space-x-4">
+                    <div class="flex-shrink-0 bg-teal-100 p-3 rounded-full">
+                        <svg class="w-6 h-6 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25"></path></svg>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold">Utilizing Goalbook</h3>
+                        <p class="text-gray-600 text-sm">Leverage Goalbook to create high-quality IEPs.</p>
+                    </div>
+                </a>
+                <!-- BIP Fidelity Card -->
+                <a href="#bip" data-target="bip" class="home-card card bg-white p-6 rounded-lg shadow flex items-center space-x-4">
+                    <div class="flex-shrink-0 bg-green-100 p-3 rounded-full">
+                        <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold">BIP Fidelity</h3>
+                        <p class="text-gray-600 text-sm">Ensure consistent and effective BIP implementation.</p>
+                    </div>
+                </a>
+                <!-- Behavior Strategies Card -->
+                <a href="#strategies" data-target="strategies" class="home-card card bg-white p-6 rounded-lg shadow flex items-center space-x-4">
+                    <div class="flex-shrink-0 bg-purple-100 p-3 rounded-full">
+                        <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold">Behavior Strategies</h3>
+                        <p class="text-gray-600 text-sm">Discover front-line strategies for the classroom.</p>
+                    </div>
+                </a>
+                <!-- Getting Support Card -->
+                <a href="#support" data-target="support" class="home-card card bg-white p-6 rounded-lg shadow flex items-center space-x-4">
+                    <div class="flex-shrink-0 bg-red-100 p-3 rounded-full">
+                         <svg class="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold">Getting Support</h3>
+                        <p class="text-gray-600 text-sm">Know the pathway for escalating support needs.</p>
+                    </div>
+                </a>
+            </div>
+        </section>
+
         <!-- Section 1: Data Collection -->
-        <section id="data" class="content-section active">
+        <section id="data" class="content-section">
             <h2 class="text-3xl font-bold text-gray-800 mb-2">Effective Data Collection</h2>
             <p class="text-lg text-gray-600 mb-6">Collecting objective data is the foundation of any effective behavior plan. It helps us move from "I feel like it's getting worse" to "The behavior occurs an average of 5 times per hour." Good data allows us to identify patterns, make informed decisions, and measure progress accurately.</p>
 
@@ -180,11 +244,81 @@
                         <h4 class="font-bold text-lg text-blue-700">Recommended Method:</h4>
                         <p id="result-text" class="mt-2"></p>
                     </div>
+                     <div class="mt-6">
+                        <a href="javascript:void(0)" id="download-sheets" class="inline-block bg-blue-500 text-white font-bold py-2 px-4 rounded hover:bg-blue-600 transition-colors">Download Blank Data Sheets</a>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- Section 2: Executive Functioning and Behavior Skills -->
+        <!-- Section 2: Goal Writing -->
+        <section id="goal-writing" class="content-section">
+            <h2 class="text-3xl font-bold text-gray-800 mb-2">Writing Effective Behavior & Executive Function IEP Goals</h2>
+            <p class="text-lg text-gray-600 mb-6">Crafting clear, measurable, and effective IEP goals is essential for guiding instruction and tracking student progress. Every goal must be grounded in the student's present levels of performance and meet SMART criteria.</p>
+
+            <div class="space-y-8">
+                <div class="bg-white p-6 rounded-lg shadow">
+                    <h3 class="text-xl font-bold mb-4 text-cyan-600">Key Components of a Strong IEP Goal</h3>
+                    <p class="mb-4">A well-written goal starts with a strong foundation and follows a clear structure.</p>
+                    <ul class="list-disc list-inside space-y-3">
+                        <li><strong>Present Levels (PLAAFP):</strong> The goal must be based on the student's current academic and functional abilities. This baseline data describes how the disability affects involvement in the general curriculum and is the starting point for any goal.</li>
+                        <li><strong>SMART Criteria:</strong> Goals must be <strong>S</strong>pecific, <strong>M</strong>easurable, <strong>A</strong>ttainable, <strong>R</strong>elevant, and <strong>T</strong>ime-bound.</li>
+                        <li><strong>Three-Part Structure:</strong> A clear goal includes the <strong>Condition</strong> (when/where), the <strong>Target Behavior</strong> (what the student will do), and the <strong>Criterion</strong> (the measurable standard of success).</li>
+                         <li><strong>Progress Monitoring Plan:</strong> The IEP must specify how and how often progress will be measured (e.g., weekly frequency counts, daily checklists) and reported to parents.</li>
+                    </ul>
+                </div>
+
+                <div class="bg-white p-6 rounded-lg shadow">
+                    <h3 class="text-xl font-bold mb-4 text-cyan-600">Behavior & Executive Functioning Considerations</h3>
+                     <p class="mb-4">When writing goals for these areas, be specific about context, supports, and replacement behaviors.</p>
+                    <ul class="list-disc list-inside space-y-3">
+                        <li>Define behaviors in observable terms (e.g., instead of "impulse control," use "uses a taught strategy to pause and think before speaking").</li>
+                        <li>Specify the supports the student will use (e.g., visual schedule, checklist, self-monitoring form, break card).</li>
+                        <li>Focus on teaching a replacement behavior, not just reducing a problem behavior.</li>
+                        <li>Use clear measures like frequency (number of times), duration (minutes on-task), or rating scales (self-rating of anxiety).</li>
+                    </ul>
+                </div>
+
+                <div class="bg-white p-6 rounded-lg shadow">
+                    <h3 class="text-xl font-bold mb-4 text-cyan-600">Examples of SMART IEP Goals</h3>
+                    <div class="space-y-4">
+                        <div>
+                            <h4 class="font-semibold">Elementary – ADHD (Impulse Control)</h4>
+                            <p class="text-sm text-gray-700">Given a visual cue and choice of movement strategies, [Student] will use a self‑calming strategy (e.g. deep breathing, squeeze ball) to pause before speaking in 4 out of 5 opportunities, as measured by teacher observation over 4 consecutive weeks.</p>
+                        </div>
+                        <hr>
+                        <div>
+                            <h4 class="font-semibold">Middle School – Autism (Emotional Regulation)</h4>
+                            <p class="text-sm text-gray-700">Given a break card and adult support, [Student] will use a coping strategy (e.g. request break, deep breathe) to reduce anxiety from 4/5 to ≤2/5 on a self-rating scale in 4 of 5 opportunities, over a 6-week period.</p>
+                        </div>
+                        <hr>
+                        <div>
+                            <h4 class="font-semibold">High School – ADHD (Executive Function)</h4>
+                            <p class="text-sm text-gray-700">Given a large project prompt, [Student] will outline the task into at least five sequential steps using a graphic organizer and submit the outline to the teacher by the next class period, with no more than 1 teacher prompt, on 4 out of 5 assignments.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-cyan-50 p-6 rounded-lg shadow">
+                    <h3 class="text-xl font-bold mb-4 text-cyan-700">Goal Writing Template</h3>
+                    <p class="mb-4">Use this template as a starting point. Fill in the brackets with student-specific details.</p>
+                    <div class="bg-white p-4 rounded-md text-gray-700 space-y-2">
+                        <p><strong>Annual Goal:</strong> Given [condition/support], [Student] will [specific behavior/skill] with [criteria] by [timeframe].</p>
+                        <p><strong>Baseline (Present Level):</strong> [Student’s current performance level in this area].</p>
+                        <p><strong>Measurement:</strong> [How progress will be tracked and how often, e.g., daily data sheet, weekly rubric].</p>
+                        <div>
+                            <p><strong>Short-Term Objectives (if used):</strong></p>
+                            <ol class="list-decimal list-inside ml-4">
+                                <li>[Objective 1 – incremental step toward the annual goal].</li>
+                                <li>[Objective 2 – another interim milestone].</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: Executive Functioning and Behavior Skills -->
         <section id="ef-skills" class="content-section">
             <h2 class="text-3xl font-bold text-gray-800 mb-2">Executive Functioning and Behavior Skills</h2>
             <p class="text-lg text-gray-600 mb-6">Executive function (EF) skills are the mental processes that allow students to plan, organize, focus, remember, and manage multiple tasks. Strong EF and self-regulation are foundational for learning, and all students benefit from explicit instruction in these areas.</p>
@@ -216,54 +350,20 @@
                     </ul>
                 </div>
             </div>
-            <div class="mt-8">
-                <h3 class="text-2xl font-bold text-gray-800 mb-4">Sample Resources & Curricula</h3>
-                <p class="text-lg text-gray-600 mb-6">Many structured curricula and free resources exist to support EF and SEL instruction. Consider exploring:</p>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <!-- Harvard's Activities Guide Card -->
-                    <div class="bg-white p-6 rounded-lg shadow lg:col-span-3">
-                         <a href="https://developingchild.harvard.edu/resources/handouts-tools/activities-guide-enhancing-and-practicing-executive-function-skills/" target="_blank" class="font-bold text-indigo-600 hover:underline">Harvard's Activities Guide</a>
-                        <p class="text-sm text-gray-600 mt-1 mb-3">Age-specific activities to build EF and self-regulation.</p>
-                        <div class="space-y-2">
-                            <div>
-                                <button class="accordion-button w-full text-left text-sm font-semibold text-blue-600 p-2 bg-blue-50 rounded hover:bg-blue-100 flex justify-between items-center">
-                                    <span>Activities for Ages 5-7</span>
-                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                                </button>
-                                <div class="accordion-content bg-white p-3 border border-t-0 rounded-b-md">
-                                    <p class="text-xs text-gray-600">Focus on games with rules. Use card games like Concentration or Go Fish for working memory, and physical games like Red Light, Green Light or Simon Says for attention and inhibition. Movement and song games (e.g., Punchinella, call-and-response songs) are also great.</p>
-                                </div>
-                            </div>
-                            <div>
-                                <button class="accordion-button w-full text-left text-sm font-semibold text-blue-600 p-2 bg-blue-50 rounded hover:bg-blue-100 flex justify-between items-center">
-                                    <span>Activities for Ages 7-12</span>
-                                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                                </button>
-                                <div class="accordion-content bg-white p-3 border border-t-0 rounded-b-md">
-                                    <p class="text-xs text-gray-600">Increase complexity. Use strategy games like chess, checkers, or Hearts. Organized sports like soccer help with coordination and attention. Jump rope games, music/dance, and brain teasers like Sudoku or crossword puzzles are also effective.</p>
-                                </div>
-                            </div>
-                            <div>
-                                <button class="accordion-button w-full text-left text-sm font-semibold text-blue-600 p-2 bg-blue-50 rounded hover:bg-blue-100 flex justify-between items-center">
-                                    <span>Activities for Adolescents</span>
-                                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                                </button>
-                                <div class="accordion-content bg-white p-3 border border-t-0 rounded-b-md">
-                                    <p class="text-xs text-gray-600">Focus on real-world application. Encourage goal setting for meaningful projects (e.g., getting a driver's license, planning an event). Use self-talk and journaling for self-monitoring. Sports, yoga, music, theater, and strategy games are excellent. Explicitly teach study skills like breaking down projects and using calendars.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Other Resource Cards -->
-                    <a href="https://smarts-ef.org/" target="_blank" class="resource-card bg-white p-4 rounded-lg shadow"><h4 class="font-bold text-indigo-600">SMARTS Executive Function Curriculum</h4></a>
-                    <a href="https://www.secondstep.org/" target="_blank" class="resource-card bg-white p-4 rounded-lg shadow"><h4 class="font-bold text-indigo-600">Second Step (K-8 SEL)</h4></a>
-                    <a href="https://zonesofregulation.com/" target="_blank" class="resource-card bg-white p-4 rounded-lg shadow"><h4 class="font-bold text-indigo-600">Zones of Regulation</h4></a>
-                    <a href="https://sites.google.com/scred.k12.mn.us/scredsel/educators/be-good-people-curriculum" target="_blank" class="resource-card bg-white p-4 rounded-lg shadow"><h4 class="font-bold text-indigo-600">Be Good People (free SEL)</h4></a>
-                    <a href="https://www.harmonysel.org/" target="_blank" class="resource-card bg-white p-4 rounded-lg shadow"><h4 class="font-bold text-indigo-600">Harmony SEL</h4></a>
-                    <a href="https://www.centervention.com/social-emotional-learning-activities/" target="_blank" class="resource-card bg-white p-4 rounded-lg shadow"><h4 class="font-bold text-indigo-600">Centervention Activities</h4></a>
-                    <a href="https://www.thepathway2success.com/9-free-executive-functioning-activities/" target="_blank" class="resource-card bg-white p-4 rounded-lg shadow"><h4 class="font-bold text-indigo-600">Pathway2Success Printables</h4></a>
-                    <a href="https://everydayspeech.com/" target="_blank" class="resource-card bg-white p-4 rounded-lg shadow"><h4 class="font-bold text-indigo-600">Everyday Speech Materials</h4></a>
-                </div>
+            <div class="mt-8 bg-white p-6 rounded-lg shadow">
+                 <h3 class="text-xl font-bold mb-4 text-indigo-600">Sample Resources & Curricula</h3>
+                <p class="text-gray-600 mb-4">Many structured curricula and free resources exist to support EF and SEL instruction. Consider exploring:</p>
+                <ul class="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-2 list-disc list-inside text-gray-700">
+                    <li><a href="https://developingchild.harvard.edu/resources/activities-guide-enhancing-and-practicing-executive-function-skills/" target="_blank" class="text-blue-500 hover:underline">Harvard's Activities Guide</a></li>
+                    <li><a href="https://smarts-ef.org/" target="_blank" class="text-blue-500 hover:underline">SMARTS Executive Function Curriculum</a></li>
+                    <li><a href="https://www.secondstep.org/early-learning-curriculum" target="_blank" class="text-blue-500 hover:underline">Second Step (K-8 SEL)</a></li>
+                    <li><a href="https://zonesofregulation.com/" target="_blank" class="text-blue-500 hover:underline">Zones of Regulation</a></li>
+                    <li><a href="https://sites.google.com/scred.k12.mn.us/scredsel/educators/be-good-people-curriculum" target="_blank" class="text-blue-500 hover:underline">Be Good People (free SEL)</a></li>
+                    <li><a href="https://www.harmonysel.org/" target="_blank" class="text-blue-500 hover:underline">Harmony SEL</a></li>
+                    <li><a href="https://www.centervention.com/social-emotional-learning-activities/" target="_blank" class="text-blue-500 hover:underline">Centervention Activities</a></li>
+                    <li><a href="https://www.thepathway2success.com/9-free-executive-functioning-activities/" target="_blank" class="text-blue-500 hover:underline">Pathway2Success Printables</a></li>
+                    <li><a href="https://everydayspeech.com/" target="_blank" class="text-blue-500 hover:underline">Everyday Speech Materials</a></li>
+                </ul>
             </div>
             <div class="mt-8">
                 <h3 class="text-2xl font-bold text-gray-800 mb-2">Lesson Plan Unit Generator Tool</h3>
@@ -274,7 +374,48 @@
             </div>
         </section>
 
-        <!-- Section 3: BIP Fidelity -->
+        <!-- Section 4: Goalbook -->
+        <section id="goalbook" class="content-section">
+            <h2 class="text-3xl font-bold text-gray-800 mb-2">Utilizing Goalbook for Student Success</h2>
+            <p class="text-lg text-gray-600 mb-6">Goalbook is a powerful resource that empowers educators to design instruction based on the principles of Universal Design for Learning (UDL), ensuring that ALL students can succeed. It's a holistic toolkit for developing high-quality, standards-aligned IEPs and implementing them with effective, specially designed instruction.</p>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow">
+                    <h3 class="text-xl font-bold mb-4 text-teal-600">Key Benefits of Using Goalbook</h3>
+                    <ul class="list-disc list-inside space-y-3 text-gray-700">
+                        <li><strong>Saves Valuable Time:</strong> Quickly find research-based strategies, assessment resources, and goal statements instead of starting from scratch.</li>
+                        <li><strong>Improves IEP Quality:</strong> Develop measurable, standards-aligned goals that are truly individualized to student needs. Research shows goals written with Goalbook contain significantly more detail.</li>
+                        <li><strong>Promotes UDL:</strong> Access a rich library of strategies and resources categorized by UDL principles (Engagement, Representation, Action & Expression) to proactively address learning barriers.</li>
+                        <li><strong>Enhances Collaboration:</strong> Provides a common language and framework for general educators, special educators, and service providers to work together effectively.</li>
+                        <li><strong>Supports Data-Driven Decisions:</strong> Use assessment resources and probing questions to write specific, data-informed Present Levels statements.</li>
+                    </ul>
+                </div>
+                <div class="bg-teal-50 p-6 rounded-lg shadow">
+                    <h3 class="text-xl font-bold mb-4 text-teal-600">How to Utilize Goalbook Effectively</h3>
+                    <ol class="list-decimal list-inside space-y-4 text-gray-700">
+                        <li>
+                            <strong>Define Present Levels:</strong> Start by exploring the assessment resources in Goalbook Toolkit. Use the standards-aligned items and reading passages to gather baseline data and write clear, data-driven Present Level statements that articulate student strengths and needs.
+                        </li>
+                        <li>
+                            <strong>Develop Standards-Aligned Goals:</strong> Use the Present Levels to search for aligned learning goals. Filter by subject, grade level, and standard. Select a goal and use the different levels of support (e.g., mild, moderate, intense) to customize it for your student.
+                        </li>
+                        <li>
+                            <strong>Design Differentiated Instruction:</strong> Once you have a goal, explore the linked UDL strategies. These strategies are designed to remove specific learning barriers. You can find ready-to-use resources, implementation tips, and printable materials to immediately apply in your classroom.
+                        </li>
+                        <li>
+                            <strong>Collaborate and Implement:</strong> Share the selected strategies and resources with the entire IEP team (paras, gen ed teachers). This ensures everyone is using the same language and providing consistent support, leading to higher fidelity of implementation.
+                        </li>
+                    </ol>
+                </div>
+            </div>
+             <div class="mt-8 text-center">
+                <a href="https://goalbookapp.com/" target="_blank" class="inline-block bg-teal-500 text-white font-bold py-3 px-6 rounded-lg hover:bg-teal-600 transition-colors text-lg">
+                    Explore Goalbook Toolkit
+                </a>
+            </div>
+        </section>
+        
+        <!-- Section 5: BIP Fidelity -->
         <section id="bip" class="content-section">
              <h2 class="text-3xl font-bold text-gray-800 mb-2">Ensuring BIP Fidelity & Stakeholder Communication</h2>
             <p class="text-lg text-gray-600 mb-6">A BIP is only effective if it's implemented consistently by everyone who works with the student. This is called <span class="font-bold">fidelity</span>. Clear communication and shared understanding are essential.</p>
@@ -331,7 +472,7 @@
             </div>
         </section>
 
-        <!-- Section 4: Behavior Strategies -->
+        <!-- Section 6: Behavior Strategies -->
         <section id="strategies" class="content-section">
             <h2 class="text-3xl font-bold text-gray-800 mb-2">Front-Line Behavior Strategies</h2>
             <p class="text-lg text-gray-600 mb-6">These are proactive and reactive strategies that can be used in the classroom to support positive behavior. Many of these are excellent Tier 1 supports for all students.</p>
@@ -373,7 +514,7 @@
             </div>
         </section>
 
-        <!-- Section 5: Getting More Support -->
+        <!-- Section 7: Getting More Support -->
         <section id="support" class="content-section">
             <h2 class="text-3xl font-bold text-gray-800 mb-2">When a BIP Isn't Enough: Getting More Support</h2>
             <p class="text-lg text-gray-600 mb-6">Sometimes, despite a well-written BIP and high-fidelity implementation, a student may not make the expected progress. This is not a failure, but a sign that more support is needed.</p>
@@ -412,7 +553,7 @@
                             </div>
                             <div class="ml-4">
                                 <h4 class="text-lg font-bold">Team Problem-Solving</h4>
-                                <p class="mt-1 text-gray-600">The school psychologist will likely convene a team meeting (including you, general education teacher, admin, and other relevant staff) to review the data and fidelity checks. The team may decide to adjust the BIP with new strategies or goals.</p>
+                                <p class="mt-1 text-gray-600">The school psychologist will likely convene a team meeting (including you, the general education teahcer, Admin, and other relevant staff) to review the data and fidelity checks. The team may decide to adjust the BIP with new strategies or goals.</p>
                             </div>
                         </div>
                     </div>
@@ -447,7 +588,7 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             // --- Navigation ---
-            const navLinks = document.querySelectorAll('.nav-link');
+            const navLinks = document.querySelectorAll('.nav-link, .home-card');
             const sections = document.querySelectorAll('.content-section');
 
             function showSection(targetId) {
@@ -458,7 +599,7 @@
                     }
                 });
 
-                navLinks.forEach(link => {
+                document.querySelectorAll('.nav-link').forEach(link => {
                     link.classList.remove('active');
                     if (link.dataset.target === targetId) {
                         link.classList.add('active');
@@ -466,8 +607,8 @@
                 });
             }
 
-            // Set initial view based on hash or default to 'data'
-            const initialTarget = window.location.hash ? window.location.hash.substring(1) : 'data';
+            // Set initial view based on hash or default to 'home'
+            const initialTarget = window.location.hash ? window.location.hash.substring(1) : 'home';
             showSection(initialTarget);
 
             navLinks.forEach(link => {
@@ -497,32 +638,25 @@
                 'delay': '<b>Latency Recording.</b> This specifically measures the time it takes for a student to comply with a directive, which is exactly what you want to know.'
             };
 
-            q1.addEventListener('change', () => {
-                const value = q1.value;
-                if (value && recommendations[value]) {
-                    resultText.innerHTML = recommendations[value];
-                    wizardResult.style.display = 'block';
-                } else {
-                    wizardResult.style.display = 'none';
-                }
-            });
-
-            // --- Accordion Logic ---
-            const accordionButtons = document.querySelectorAll('.accordion-button');
-            accordionButtons.forEach(button => {
-                button.addEventListener('click', () => {
-                    const content = button.nextElementSibling;
-                    const svg = button.querySelector('svg');
-
-                    if (content.style.maxHeight) {
-                        content.style.maxHeight = null;
-                        svg.style.transform = 'rotate(0deg)';
+            if(q1) {
+                q1.addEventListener('change', () => {
+                    const value = q1.value;
+                    if (value && recommendations[value]) {
+                        resultText.innerHTML = recommendations[value];
+                        wizardResult.style.display = 'block';
                     } else {
-                        content.style.maxHeight = content.scrollHeight + "px";
-                        svg.style.transform = 'rotate(180deg)';
-                    } 
+                        wizardResult.style.display = 'none';
+                    }
                 });
-            });
+            }
+
+            // --- Download Blank Data Sheets ---
+            const downloadSheetsBtn = document.getElementById('download-sheets');
+            if(downloadSheetsBtn) {
+                downloadSheetsBtn.addEventListener('click', () => {
+                    alert("This feature would provide downloadable PDF versions of Frequency, Duration, ABC, and Interval recording sheets.");
+                });
+            }
 
             // --- Strategy Modal ---
             const modal = document.getElementById('strategy-modal');
@@ -624,7 +758,7 @@
                         <ul class="list-disc list-inside space-y-2">
                             <li><b>Specific, labeled praise:</b> "I love how you got started on your work right away." is much better than "Good job."</li>
                             <li><b>Non-verbal cues:</b> A smile, a thumbs-up, a nod.</li>
-                            <li><b>Positive notes or calls home.</b></li>
+                            <li><b>Positive notes or calls home.</li>
                             <li><b>Asking about their interests:</b> Showing genuine care for them as a person.</li>
                         </ul>
                         <p class="mt-4">This helps build a "behavioral bank account." When you have to make a "withdrawal" (a correction), you have plenty of positive capital built up.</p>
@@ -636,7 +770,7 @@
                     content: `
                         <p class="mb-4">For many students, especially those who struggle with sustained attention or emotional regulation, breaks are not a reward—they are a necessary tool for learning. Proactively scheduling breaks can prevent behavioral escalations.</p>
                         <h4 class="font-bold text-lg mb-2">How to Implement:</h4>
-                        <ul class="list-disc list-inside space-y-2">
+                        <ul class="list-decimal list-inside space-y-2">
                             <li><b>Make it part of the schedule:</b> Don't wait for the student to be overwhelmed. The break should be built into their visual schedule (e.g., "Work for 10 minutes, then 2-minute break").</li>
                             <li><b>Define the break:</b> What can the student do? (e.g., stretch, get a drink, walk to a designated spot).</li>
                             <li><b>Use a timer:</b> A visual timer helps the student understand how long the break is and when it's time to return to work.</li>
@@ -664,12 +798,14 @@
                 modal.style.display = 'none';
             }
 
-            closeModalBtn.addEventListener('click', closeModal);
-            modal.addEventListener('click', (e) => {
-                if (e.target === modal) {
-                    closeModal();
-                }
-            });
+            if(closeModalBtn) {
+                closeModalBtn.addEventListener('click', closeModal);
+                modal.addEventListener('click', (e) => {
+                    if (e.target === modal) {
+                        closeModal();
+                    }
+                });
+            }
 
         });
     </script>
